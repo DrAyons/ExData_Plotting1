@@ -1,0 +1,10 @@
+library(lubridate)
+## Plot uses data tibble from previous R file ("useful")
+useful$Date <- dmy(useful$Date)
+useful$Date_Time <- paste(useful$Date,useful$Time)
+useful$Date_Time1 <- ymd_hms(useful$Date_Time)
+useful$Weekdays <- weekdays(useful$Date)
+
+png(filename = "plot2.png")
+with(useful, plot(Date_Time1,Global_active_power,type = "l", ylab = "Global Active Power (kilowatts)", xlab=""))
+dev.off()
